@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace TicTacToe_AI.View
 {
-    public partial class MainScreen : Form
+    public partial class Game : Form
     {
-        public MainScreen()
+        public Game()
         {
             InitializeComponent();
         }

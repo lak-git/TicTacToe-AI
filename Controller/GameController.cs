@@ -8,8 +8,6 @@ namespace TicTacToe_AI.Controller
 {
     internal class GameController
     {
-        const string X = "X";
-        const string O = "O";
-        const string EMPTY = " ";
+        
     }
 }

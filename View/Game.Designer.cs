@@ -1,6 +1,6 @@
 ﻿namespace TicTacToe_AI.View
 {
-    partial class GameScreen
+    partial class Game
     {
         /// <summary>
         /// Required designer variable.
@@ -148,7 +148,7 @@
             cell_BL.Text = " ";
             cell_BL.UseVisualStyleBackColor = false;
             // 
-            // GameScreen
+            // Game
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -163,8 +163,8 @@
             Controls.Add(cell_TM);
             Controls.Add(cell_TL);
             Controls.Add(btn_Restart);
-            Name = "GameScreen";
-            Text = "GameScreen";
+            Name = "Game";
+            Text = "Game";
             ResumeLayout(false);
         }
 

@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TicTacToe_AI.Models
+namespace TicTacToe_AI.Controller
 {
-    internal class GameLogic
+    internal class PlayerController
     {
-        
     }
 }

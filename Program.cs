@@ -1,3 +1,11 @@
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.VisualBasic.Logging;
+using Microsoft.Win32;
+using System;
+using TicTacToe_AI.Controller;
+using TicTacToe_AI.Models;
+using TicTacToe_AI.View;
+
 namespace TicTacToe_AI
 {
     internal static class Program
@@ -11,7 +19,24 @@ namespace TicTacToe_AI
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new MainScreen());
+            var serviceProvider = ConfigureServices();
+
+            var mainScreen = serviceProvider.GetRequiredService<ChoosePlayer>();
+            Application.Run(mainScreen);
+        }
+
+        private static ServiceProvider ConfigureServices()
+        {
+            var services = new ServiceCollection();
+
+            services.AddSingleton<GameController>();
+
+            services.AddSingleton<GameLogic>();
+
+            services.AddTransient<ChoosePlayer>();
+            services.AddTransient<Game>();
+
+            return services.BuildServiceProvider();
         }
     }
 }

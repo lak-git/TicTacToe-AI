@@ -1,6 +1,6 @@
 ﻿namespace TicTacToe_AI.View
 {
-    partial class MainScreen
+    partial class ChoosePlayer
     {
         /// <summary>
         /// Required designer variable.

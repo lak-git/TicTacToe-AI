@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace TicTacToe_AI.View
 {
-    public partial class ChoosePlayer : Form
+    public partial class PlayerSelection : Form
     {
-        public ChoosePlayer()
+        public PlayerSelection()
         {
             InitializeComponent();
         }

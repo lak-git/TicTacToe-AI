@@ -1,6 +1,6 @@
 ﻿namespace TicTacToe_AI.View
 {
-    partial class ChoosePlayer
+    partial class PlayerSelection
     {
         /// <summary>
         /// Required designer variable.
@@ -34,7 +34,7 @@
             // 
             // btn_PlayX
             // 
-            btn_PlayX.Location = new Point(66, 193);
+            btn_PlayX.Location = new Point(68, 193);
             btn_PlayX.Name = "btn_PlayX";
             btn_PlayX.Size = new Size(98, 36);
             btn_PlayX.TabIndex = 0;
@@ -43,21 +43,21 @@
             // 
             // btn_PlayO
             // 
-            btn_PlayO.Location = new Point(209, 193);
+            btn_PlayO.Location = new Point(213, 193);
             btn_PlayO.Name = "btn_PlayO";
             btn_PlayO.Size = new Size(98, 36);
             btn_PlayO.TabIndex = 1;
             btn_PlayO.Text = "Play as O";
             btn_PlayO.UseVisualStyleBackColor = true;
             // 
-            // MainScreen
+            // PlayerSelection
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(384, 411);
             Controls.Add(btn_PlayO);
             Controls.Add(btn_PlayX);
-            Name = "MainScreen";
+            Name = "PlayerSelection";
             Text = "MainScreen";
             ResumeLayout(false);
         }

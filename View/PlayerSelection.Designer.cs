@@ -58,7 +58,7 @@
             Controls.Add(btn_PlayO);
             Controls.Add(btn_PlayX);
             Name = "PlayerSelection";
-            Text = "MainScreen";
+            Text = "TicTacToe";
             ResumeLayout(false);
         }
 

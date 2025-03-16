@@ -8,5 +8,8 @@ namespace TicTacToe_AI.Models
 {
     internal class GameLogic
     {
+        const string X = "X";
+        const string O = "O";
+        const string EMPTY = " ";
     }
 }

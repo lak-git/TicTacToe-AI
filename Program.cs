@@ -21,7 +21,7 @@ namespace TicTacToe_AI
             ApplicationConfiguration.Initialize();
             var serviceProvider = ConfigureServices();
 
-            var mainScreen = serviceProvider.GetRequiredService<ChoosePlayer>();
+            var mainScreen = serviceProvider.GetRequiredService<PlayerSelection>();
             Application.Run(mainScreen);
         }
 
@@ -33,7 +33,7 @@ namespace TicTacToe_AI
 
             services.AddSingleton<GameLogic>();
 
-            services.AddTransient<ChoosePlayer>();
+            services.AddTransient<PlayerSelection>();
             services.AddTransient<Game>();
 
             return services.BuildServiceProvider();

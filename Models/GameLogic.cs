@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing.Imaging;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace TicTacToe_AI.Models
@@ -66,7 +61,7 @@ namespace TicTacToe_AI.Models
             }
         }
 
-        public string DetermineWinner(Board boardState)
+        public string CheckWinner(Board boardState)
         {
             var board = boardState.Cells;
 
@@ -144,7 +139,7 @@ namespace TicTacToe_AI.Models
 
         public bool Terminal(Board board)
         {
-            var winner = this.DetermineWinner(board);
+            var winner = this.CheckWinner(board);
             if (winner.Equals(X) || winner.Equals(O))
             {
                 return true;
@@ -162,6 +157,21 @@ namespace TicTacToe_AI.Models
             }
 
             return true;
+        }
+
+        public int Utility(Board board)
+        {
+            switch (this.CheckWinner(board))
+            {
+                case string winner when winner.Equals(X):
+                    return 1;
+
+                case string winner when winner.Equals(O):
+                    return -1;
+
+                default:
+                    return 0;
+            }
         }
     }
 }

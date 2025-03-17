@@ -15,14 +15,12 @@ namespace TicTacToe_AI.View
     {
         private readonly GameController _gameController;
 
-        public List<List<Button>> Board;
-
         public Game(GameController gameController)
         {
             _gameController = gameController;
 
             InitializeComponent();
-            Board = _gameController.InitialClick
+            _gameController.NewGame
                 (
                     cell_TL, cell_TM, cell_TR,
                     cell_ML, cell_MM, cell_MR,
@@ -32,12 +30,17 @@ namespace TicTacToe_AI.View
 
         private void cell_Click(object sender, EventArgs e)
         {
-
+            var cell = (Button)sender;
         }
 
         private void btn_Restart_Click(object sender, EventArgs e)
         {
-
+            _gameController.NewGame
+                (
+                    cell_TL, cell_TM, cell_TR,
+                    cell_ML, cell_MM, cell_MR,
+                    cell_BL, cell_BM, cell_BR
+                );
         }
     }
 }

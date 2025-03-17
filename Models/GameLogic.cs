@@ -105,5 +105,41 @@ namespace TicTacToe_AI.Models
 
             return newBoard;
         }
+
+        public string Winner(Board boardState)
+        {
+            var board = boardState.Cells;
+
+            // Check rows
+            foreach (var row in board)
+            {
+                if (row[0].Text.Equals(row[1].Text.Equals(row[2].Text)) && !row[0].Text.Equals(EMPTY))
+                {
+                    return row[0].Text;
+                }
+            }
+
+            // Check columns
+            for (int column=0; column < 3; column++)
+            {
+                if (
+                board[0][column].Text.Equals(board[1][column].Text.Equals(board[2][column].Text)) && !board[0][column].Text.Equals(EMPTY))
+                {
+                    return board[0][column].Text;
+                }
+            }
+
+            //Check diagonals
+            if (board[0][0].Text.Equals(board[1][1].Text.Equals(board[2][2].Text)) && !board[0][0].Text.Equals(EMPTY))
+            {
+                return board[0][0].Text;
+            }
+            else if (board[0][2].Text.Equals(board[1][1].Text.Equals(board[0][2].Text)) && !board[0][2].Text.Equals(EMPTY))
+            {
+                return board[0][2].Text;
+            }
+
+            return null;
+        }
     }
 }

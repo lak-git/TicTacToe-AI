@@ -8,7 +8,7 @@ namespace TicTacToe_AI.Models
 {
     public class Board
     {
-        public List<List<Button>> Cells { private set; get; }
+        public List<List<Button>> Cells { get; private set; }
 
         public Board() { }
         public Board

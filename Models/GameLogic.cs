@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing.Imaging;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -82,9 +83,26 @@ namespace TicTacToe_AI.Models
             return moves;
         }
 
-        public List<List<Button>> Result(List<List<Button>> board, Button action)
+        public Board Result(Board board, Button action)
         {
-            var newBoard = board;
+            var actions = Actions(board);
+            foreach (var cell in actions)
+            {
+                if (!cell.Name.Equals(action.Name))
+                {
+                    throw new Exception("Invalid Action.");
+                }
+            }
+
+            var newBoard = board.DeepCopy();
+            foreach (var row in newBoard.Cells)
+            {
+                foreach (var cell in row)
+                {
+                    cell.Text = this.CurrentPlayer(board);
+                }
+            }
+
             return newBoard;
         }
     }

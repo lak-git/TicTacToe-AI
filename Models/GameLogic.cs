@@ -130,7 +130,10 @@ namespace TicTacToe_AI.Models
             {
                 foreach (var cell in row)
                 {
-                    cell.Text = this.CurrentPlayer(board);
+                    if (cell.Name.Equals(action.Name))
+                    {
+                        cell.Text = this.CurrentPlayer(board);
+                    }
                 }
             }
 

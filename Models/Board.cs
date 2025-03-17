@@ -27,23 +27,8 @@ namespace TicTacToe_AI.Models
 
         public Board DeepCopy()
         {
-            var newBoard = new List<List<Button>>
-            {
-                new List<Button> { new Button(), new Button(), new Button() },
-                new List<Button> { new Button(), new Button(), new Button() },
-                new List<Button> { new Button(), new Button(), new Button() }
-            };
-            foreach (var newRow in newBoard)
-            {
-                foreach (var row in Cells)
-                {
-                    newRow[0].Name = row[0].Name; newRow[0].Text = row[0].Text;
-                    newRow[1].Name = row[1].Name; newRow[1].Text = row[1].Text;
-                    newRow[2].Name = row[2].Name; newRow[2].Text = row[2].Text;
-                }
-            }
-
-            return new Board() { Cells = newBoard };
+            Board newBoard = (Board)this.MemberwiseClone();
+            return newBoard;
         }
     }
 }

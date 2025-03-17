@@ -30,6 +30,7 @@ namespace TicTacToe_AI
             var services = new ServiceCollection();
 
             services.AddSingleton<GameController>();
+            services.AddSingleton<PlayerController>();
 
             services.AddSingleton<GameLogic>();
 

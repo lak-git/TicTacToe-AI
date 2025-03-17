@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TicTacToe_AI.Controller
 {
-    internal class PlayerController
+    public class PlayerController
     {
     }
 }

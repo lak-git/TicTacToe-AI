@@ -40,6 +40,7 @@
             btn_PlayX.TabIndex = 0;
             btn_PlayX.Text = "Play as X";
             btn_PlayX.UseVisualStyleBackColor = true;
+            btn_PlayX.Click += btn_PlayX_Click;
             // 
             // btn_PlayO
             // 

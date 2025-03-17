@@ -48,6 +48,7 @@
             btn_Restart.TabIndex = 1;
             btn_Restart.Text = "Restart Game";
             btn_Restart.UseVisualStyleBackColor = true;
+            btn_Restart.Click += btn_Restart_Click;
             // 
             // cell_TL
             // 
@@ -59,6 +60,7 @@
             cell_TL.TabIndex = 2;
             cell_TL.Text = " ";
             cell_TL.UseVisualStyleBackColor = false;
+            cell_TL.Click += cell_Click;
             // 
             // cell_TM
             // 
@@ -70,6 +72,7 @@
             cell_TM.TabIndex = 3;
             cell_TM.Text = " ";
             cell_TM.UseVisualStyleBackColor = false;
+            cell_TM.Click += cell_Click;
             // 
             // cell_TR
             // 
@@ -81,6 +84,7 @@
             cell_TR.TabIndex = 4;
             cell_TR.Text = " ";
             cell_TR.UseVisualStyleBackColor = false;
+            cell_TR.Click += cell_Click;
             // 
             // cell_MR
             // 
@@ -92,6 +96,7 @@
             cell_MR.TabIndex = 7;
             cell_MR.Text = " ";
             cell_MR.UseVisualStyleBackColor = false;
+            cell_MR.Click += cell_Click;
             // 
             // cell_MM
             // 
@@ -103,6 +108,7 @@
             cell_MM.TabIndex = 6;
             cell_MM.Text = " ";
             cell_MM.UseVisualStyleBackColor = false;
+            cell_MM.Click += cell_Click;
             // 
             // cell_ML
             // 
@@ -114,6 +120,7 @@
             cell_ML.TabIndex = 5;
             cell_ML.Text = " ";
             cell_ML.UseVisualStyleBackColor = false;
+            cell_ML.Click += cell_Click;
             // 
             // cell_BR
             // 
@@ -125,6 +132,7 @@
             cell_BR.TabIndex = 10;
             cell_BR.Text = " ";
             cell_BR.UseVisualStyleBackColor = false;
+            cell_BR.Click += cell_Click;
             // 
             // cell_BM
             // 
@@ -136,6 +144,7 @@
             cell_BM.TabIndex = 9;
             cell_BM.Text = " ";
             cell_BM.UseVisualStyleBackColor = false;
+            cell_BM.Click += cell_Click;
             // 
             // cell_BL
             // 
@@ -147,6 +156,7 @@
             cell_BL.TabIndex = 8;
             cell_BL.Text = " ";
             cell_BL.UseVisualStyleBackColor = false;
+            cell_BL.Click += cell_Click;
             // 
             // Game
             // 

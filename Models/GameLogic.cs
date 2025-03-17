@@ -63,5 +63,22 @@ namespace TicTacToe_AI.Models
                 throw new Exception("Invalid Player State");
             }
         }
+
+        public List<Button> Actions(List<List<Button>> board)
+        {
+            var moves = new List<Button> { };
+            foreach (var row in board)
+            {
+                foreach (var cell in row)
+                {
+                    if (cell.Text.Equals(EMPTY))
+                    {
+                        moves.Add(cell);
+                    }
+                }
+            }
+
+            return moves;
+        }
     }
 }

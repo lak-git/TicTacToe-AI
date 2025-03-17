@@ -31,6 +31,7 @@ namespace TicTacToe_AI.View
         private void cell_Click(object sender, EventArgs e)
         {
             var cell = (Button)sender;
+            cell.Text = _gameController.PlayerMove();
         }
 
         private void btn_Restart_Click(object sender, EventArgs e)

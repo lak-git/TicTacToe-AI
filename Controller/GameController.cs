@@ -27,5 +27,10 @@ namespace TicTacToe_AI.Controller
         {
             Board = _game.InitialState(cell_TL, cell_TM, cell_TR, cell_ML, cell_MM, cell_MR, cell_BL, cell_BM, cell_BR);
         }
+
+        public string PlayerMove()
+        {
+            return _game.CurrentPlayer(Board);
+        }
     }
 }

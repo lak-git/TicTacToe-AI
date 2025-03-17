@@ -13,8 +13,6 @@ namespace TicTacToe_AI.Models
         public const string O = "O";
         public const string EMPTY = " ";
 
-        public List<List<Button>> ?Board;
-
         public List<List<Button>> InitialState
             (
             Button cell_TL, Button cell_TM, Button cell_TR,
@@ -36,8 +34,34 @@ namespace TicTacToe_AI.Models
                 }
             }
 
-            Board = board;
             return board;
+        }
+
+        public string CurrentPlayer(List<List<Button>> board)
+        {
+            int xCount = 0;
+            int oCount = 0;
+            foreach (var row in board)
+            {
+                foreach (var cell in row)
+                {
+                    if (cell.Text == X) { xCount++; }
+                    else if (cell.Text == O) {  oCount++; }
+                }
+            }
+
+            if (xCount == oCount)
+            {
+                return X;
+            }
+            else if (xCount > oCount)
+            {
+                return O;
+            }
+            else
+            {
+                throw new Exception("Invalid Player State");
+            }
         }
     }
 }

@@ -11,7 +11,7 @@ namespace TicTacToe_AI.Controller
     {
         private readonly GameLogic _game;
 
-        public List<List<Button>> ?Board;
+        private Board Board { get; set; }
 
         public GameController(GameLogic gameLogic)
         {

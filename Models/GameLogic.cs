@@ -117,12 +117,9 @@ namespace TicTacToe_AI.Models
         public Board Result(Board board, Button action)
         {
             var actions = Actions(board);
-            foreach (var cell in actions)
+            if (!actions.Contains(action))
             {
-                if (!cell.Name.Equals(action.Name))
-                {
-                    throw new Exception("Invalid Action.");
-                }
+                throw new Exception("Invalid Action");
             }
 
             var newBoard = board.DeepCopy();
@@ -132,7 +129,7 @@ namespace TicTacToe_AI.Models
                 {
                     if (cell.Name.Equals(action.Name))
                     {
-                        cell.Text = this.CurrentPlayer(board);
+                        cell.Text = action.Text;
                     }
                 }
             }

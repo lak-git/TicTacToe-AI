@@ -173,5 +173,81 @@ namespace TicTacToe_AI.Models
                     return 0;
             }
         }
+
+        public Button Minimax(Board board)
+        {
+            if (this.CurrentPlayer(board).Equals(X))
+            {
+                int min = int.MinValue;
+                Button optimalMove = null;
+                foreach (var action in this.Actions(board))
+                {
+                    var value = this.MinValue(this.Result(board, action));
+                    if (value > min)
+                    {
+                        min = value;
+                        optimalMove = action;
+                    }
+                }
+                return optimalMove;
+            }
+            else
+            {
+                int max = int.MaxValue;
+                Button optimalMove = null;
+                foreach (var action in this.Actions(board))
+                {
+                    var value = this.MaxValue(this.Result(board, action));
+                    if (value < max)
+                    {
+                        max = value;
+                        optimalMove = action;
+                    }
+                }
+                return optimalMove;
+            }
+        }
+
+        public int MaxValue(Board board)
+        {
+            if (this.Terminal(board))
+            {
+                return this.Utility(board);
+            }
+
+            int v = int.MinValue;
+            foreach (var action in this.Actions(board))
+            {
+                int value = this.MinValue(this.Result(board, action));
+                if (value > v)
+                {
+                    v = value;
+                    // if (value == 1) { return v; }
+                }
+            }
+
+            return v;
+        }
+
+        public int MinValue(Board board)
+        {
+            if (this.Terminal(board))
+            {
+                return this.Utility(board);
+            }
+
+            int v = int.MaxValue;
+            foreach (var action in this.Actions(board))
+            {
+                int value = this.MaxValue(this.Result(board, action));
+                if (value < v)
+                {
+                    v = value;
+                    // if (value == -1) { return v; }
+                }
+            }
+
+            return v;
+        }
     }
 }

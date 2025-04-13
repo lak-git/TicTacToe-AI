@@ -1,0 +1,93 @@
+:root{
+    --bg : #141414;
+    --grid-bg: #bdbdbd;
+    --button: #2ecc71;
+    --button-clicked: #27ae60;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--bg);
+}
+
+h1{color: white;}
+#status{color: lightgray;}
+
+.game-container {
+    text-align: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 20px 0;
+    background-color: var(--grid-bg);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.cell {
+    width: 80px;
+    height: 80px;
+    background-color: var(--bg);
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    cursor: pointer;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.cell:hover {
+    background-color: #444;
+}
+
+.cell.x {
+    color: #e74c3c;
+}
+
+.cell.o {
+    color: #3498db;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: var(--button);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.btn:hover {
+    background-color: var(--button-clicked);
+}
+#PlayX, #PlayO {
+    padding: 2.5vh 5vh;
+    margin: 2vh;
+}
+
+.status {
+    margin: 20px 0;
+    font-size: 24px;
+    color: #333;
+}
+
+@media (max-width: 400px) {
+    .cell {
+        width: 60px;
+        height: 60px;
+        font-size: 30px;
+    }
+}

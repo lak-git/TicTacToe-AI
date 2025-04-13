@@ -45,6 +45,7 @@ class Game
         }
     }
 
+    //Returns the current player
     player(board)
     {
         let xCount = 0;
@@ -217,7 +218,7 @@ resetBtn.addEventListener("click", startGame);
 startGame();
 
 
-//
+//  ----    //
 function startGame() {
     statusBox.innerHTML = "Tic-Tac-Toe!"
     currentBoard = ttt.initialState();
@@ -231,7 +232,7 @@ function checkFirstMove() {
     let notChosen = player === null;
     if (notChosen) {
         alert("Error: You need to choose to play as X or O.");
-        location.href = "./index.html";
+        location.href = "./";
     }
     if (player === ttt.O) {
         AIMove();
@@ -259,6 +260,7 @@ async function AIMove() {
     checkGameState();
 }
 
+//Checks the current gamestate and updates the status message
 function checkGameState() {
     let winner = ttt.checkWinner(currentBoard) 
     if (winner === ttt.O) {

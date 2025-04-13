@@ -219,6 +219,7 @@ startGame();
 
 //
 function startGame() {
+    statusBox.innerHTML = "Tic-Tac-Toe!"
     currentBoard = ttt.initialState();
     cells.forEach(cell => {
         cell.textContent = ttt.EMPTY;
@@ -263,9 +264,11 @@ function checkGameState() {
     if (winner === ttt.O) {
         statusBox.innerHTML = "You lost!"
         disableClick();
+        return;
     } else if (winner === ttt.X) {
         statusBox.innerHTML = "You won! what, how?"
         disableClick();
+        return;
     }
     let isTie = true;
     cells.forEach(cell => {
@@ -274,6 +277,7 @@ function checkGameState() {
         }});
     if (isTie) {
         statusBox.innerHTML = "It's a tie."
+        return;
     }
 }
 function disableClick() {

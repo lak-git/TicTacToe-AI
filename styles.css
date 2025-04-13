@@ -47,22 +47,14 @@ h1{color: white;}
     color: white;
     transition: background-color 0.3s;
 }
-
 .cell:hover {
     background-color: #444;
 }
 
-.cell.x {
-    color: #e74c3c;
-}
-
-.cell.o {
-    color: #3498db;
-}
 
 .btn {
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 2vh 3.5vh;
+    font-size: 14pt;
     background-color: var(--button);
     color: white;
     border: none;

@@ -3,7 +3,7 @@ class Game
     X = "X";
     O = "O";
     EMPTY = "";
-    RealBoard;
+    REAL_BOARD;
     
     constructor(tl, tc, tr, ml, mc, mr, bl, bc, br) {
         let cell_tl = document.getElementById(tl);
@@ -15,7 +15,7 @@ class Game
         let cell_bl = document.getElementById(bl);
         let cell_bc = document.getElementById(bc);
         let cell_br = document.getElementById(br);
-        this.RealBoard = [
+        this.REAL_BOARD = [
             [cell_tl, cell_tc, cell_tr],
             [cell_ml, cell_mc, cell_mr],
             [cell_bl, cell_bc, cell_br]
@@ -40,7 +40,7 @@ class Game
     {
         for (let i=0; i<board.length; i++) {
             for (let j=0; j<board[0].length; j++) {
-                board[i][j] = this.RealBoard[i][j].textContent;
+                board[i][j] = this.REAL_BOARD[i][j].textContent;
             }
         }
     }
@@ -121,7 +121,6 @@ class Game
     {
         let winner = this.checkWinner(board);
         if (winner === this.X || winner == this.O) {
-            disableClick();
             return true;
         }
         for (const row of board) {
@@ -131,7 +130,6 @@ class Game
                 }
             }
         }
-        disableClick();
         return true;
     }
 
@@ -146,6 +144,66 @@ class Game
                 return 0;
         }
     }
+
+    minimax(board)
+    {
+        if (this.player(board) === this.X) {
+            let best_value = -999
+            let best_move = null;
+            for (const move of this.actions(board)) {
+                let value = this.min_value(this.result(board, move));
+                if (value > best_value) {
+                    best_move = move;
+                    best_value = value;
+                }
+            }
+            return best_move;
+        }
+        else{
+            let best_value = 999;
+            let best_move = null;
+            for (const move of this.actions(board)) {
+                let value = this.max_value(this.result(board, move));
+                if (value < best_value) {
+                    best_move = move;
+                    best_value = value;
+                }
+            }
+            return best_move;
+        }
+    }
+    min_value(board)
+    {
+        if (this.terminal(board)) {
+            let value = this.utility(board);
+            return value;
+        }
+        let v = 999
+        for (const action of this.actions(board)) {
+            let value = this.max_value(this.result(board, action));
+            if (value < v) {
+                v = value;
+                if (v == 1) { return v; }
+            }
+        }
+        return v;
+    }
+    max_value(board)
+    {
+        if (this.terminal(board)) {
+            let value = this.utility(board);
+            return value;
+        }
+        let v = -999
+        for (const action of this.actions(board)) {
+            let value = this.min_value(this.result(board, action));
+            if (value > v) {
+                v = value;
+                if (v == -1) { return v; }
+            }
+        }
+        return v;
+    }
 }
 
 const ttt = new Game("0", "1", "2", "3", "4", "5", "6", "7", "8");
@@ -157,15 +215,21 @@ cells.forEach(cell => {
 });
 
 
+//
 function turnClick(cell) {
     let emptyCell = cell.textContent === ttt.EMPTY
     if (emptyCell) {
         cell.textContent = ttt.player(currentBoard);   
     }
     ttt.syncBoards(currentBoard);
-    ttt.terminal(currentBoard);
+    checkGameState();
 }
 
+function checkGameState() {
+    if (ttt.checkWinner(currentBoard)) {
+        disableClick();
+    }
+}
 function disableClick() {
     cells.forEach(cell => {
         let emptyCell = cell.textContent === ttt.EMPTY

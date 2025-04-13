@@ -183,7 +183,6 @@ class Game
             let value = this.max_value(this.result(board, action));
             if (value < v) {
                 v = value;
-                if (v == 1) { return v; }
             }
         }
         return v;
@@ -199,7 +198,6 @@ class Game
             let value = this.min_value(this.result(board, action));
             if (value > v) {
                 v = value;
-                if (v == -1) { return v; }
             }
         }
         return v;
@@ -211,17 +209,27 @@ const cells = document.querySelectorAll(".cell");
 let currentBoard = ttt.initialState();
 
 cells.forEach(cell => {
-    cell.addEventListener("click", turnClick.bind(null, cell));
+    cell.addEventListener("click", playerMove  .bind(null, cell));
 });
 
 
 //
-function turnClick(cell) {
+function playerMove(cell) {
     let emptyCell = cell.textContent === ttt.EMPTY
     if (emptyCell) {
         cell.textContent = ttt.player(currentBoard);   
     }
     ttt.syncBoards(currentBoard);
+    checkGameState();
+    AIMove();
+}
+
+function AIMove() {
+    let move = ttt.minimax(currentBoard);
+    let sign = ttt.player(currentBoard);
+    currentBoard[move[0]][move[1]] = sign; 
+    cells[ttt.getIndex(move[0], move[1])].textContent = sign;
+    console.log(currentBoard);
     checkGameState();
 }
 

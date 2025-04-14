@@ -36,6 +36,7 @@ class Game
         return i*3 + j;
     }
 
+    //Syncs the HTML board and the logical board in the script
     syncBoards(board)
     {
         for (let i=0; i<board.length; i++) {
@@ -118,6 +119,7 @@ class Game
         return null;
     }
 
+    //Checks if the game is in an end state or not
     terminal(board)
     {
         let winner = this.checkWinner(board);
@@ -134,6 +136,7 @@ class Game
         return true;
     }
 
+    //Returns the value based on who won
     utility(board)
     {
         switch (this.checkWinner(board)) {
@@ -204,12 +207,15 @@ class Game
         return v;
     }
 }
+//  ----    //
+
 
 const ttt = new Game("0", "1", "2", "3", "4", "5", "6", "7", "8");
 const cells = document.querySelectorAll(".cell");
 const resetBtn = document.getElementById('reset');
 const statusBox = document.getElementById('status');
 let currentBoard;
+let chosenSign;
 
 cells.forEach(cell => {
     cell.addEventListener("click", playerMove.bind(null, cell));
@@ -228,13 +234,13 @@ function startGame() {
     checkFirstMove();
 }
 function checkFirstMove() {
-    player = JSON.parse(sessionStorage.getItem("PlayerSign"));
-    let notChosen = player === null;
+    chosenSign = JSON.parse(sessionStorage.getItem("PlayerSign"));
+    let notChosen = chosenSign === null;
     if (notChosen) {
         alert("Error: You need to choose to play as X or O.");
         location.href = "./";
     }
-    if (player === ttt.O) {
+    if (chosenSign === ttt.O) {
         AIMove();
     }
 }
@@ -242,17 +248,22 @@ function checkFirstMove() {
 function playerMove(cell) {
     let emptyCell = cell.textContent === ttt.EMPTY
     if (emptyCell) {
-        cell.textContent = ttt.player(currentBoard);   
+        cell.textContent = ttt.player(currentBoard);
+        ttt.syncBoards(currentBoard);
+        checkGameState();
+        AIMove();   
     }
-    ttt.syncBoards(currentBoard);
-    checkGameState();
-    AIMove();
 }
 
 async function AIMove() {
     statusBox.innerHTML = "thinking...";
     await new Promise(r => setTimeout(r, 250));
     let move = ttt.minimax(currentBoard);
+    let noMove = move === null
+    if (noMove) {
+        checkGameState();
+        return;
+    }
     let sign = ttt.player(currentBoard);
     currentBoard[move[0]][move[1]] = sign; 
     cells[ttt.getIndex(move[0], move[1])].textContent = sign;
@@ -262,12 +273,14 @@ async function AIMove() {
 
 //Checks the current gamestate and updates the status message
 function checkGameState() {
-    let winner = ttt.checkWinner(currentBoard) 
-    if (winner === ttt.O) {
+    let winner = ttt.checkWinner(currentBoard) ;
+    let aiWon = winner === ttt.X && chosenSign === ttt.O || winner === ttt.O && chosenSign === ttt.X;
+    let playerWon = winner === chosenSign;
+    if (aiWon) {
         statusBox.innerHTML = "You lost!"
         disableClick();
         return;
-    } else if (winner === ttt.X) {
+    } else if (playerWon) {
         statusBox.innerHTML = "You won! what, how?"
         disableClick();
         return;

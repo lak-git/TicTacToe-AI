@@ -152,7 +152,7 @@ class Game
     minimax(board)
     {
         if (this.player(board) === this.X) {
-            let best_value = -999
+            let best_value = -Infinity
             let best_move = null;
             for (const move of this.actions(board)) {
                 let value = this.min_value(this.result(board, move));
@@ -164,7 +164,7 @@ class Game
             return best_move;
         }
         else{
-            let best_value = 999;
+            let best_value = Infinity;
             let best_move = null;
             for (const move of this.actions(board)) {
                 let value = this.max_value(this.result(board, move));
@@ -182,7 +182,7 @@ class Game
             let value = this.utility(board);
             return value;
         }
-        let v = 999
+        let v = Infinity
         for (const action of this.actions(board)) {
             let value = this.max_value(this.result(board, action));
             if (value < v) {
@@ -197,7 +197,7 @@ class Game
             let value = this.utility(board);
             return value;
         }
-        let v = -999
+        let v = -Infinity
         for (const action of this.actions(board)) {
             let value = this.min_value(this.result(board, action));
             if (value > v) {
@@ -220,7 +220,7 @@ let chosenSign;
 cells.forEach(cell => {
     cell.addEventListener("click", playerMove.bind(null, cell));
 });
-resetBtn.addEventListener("click", startGame);
+resetBtn.addEventListener("click", ()=>{location.href = ".";});
 startGame();
 
 

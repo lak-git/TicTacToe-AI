@@ -1,22 +1,3 @@
-:root{
-    --bg : #141414;
-    --grid-bg: #bdbdbd;
-    --button: #2ecc71;
-    --button-clicked: #249c56;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: var(--bg);
-}
-
-h1{color: white;}
 #status{color: lightgray;}
 
 .game-container {
@@ -51,30 +32,12 @@ h1{color: white;}
     background-color: #444;
 }
 
-
-.btn {
-    padding: 2vh 3.5vh;
-    font-size: 14pt;
-    background-color: var(--button);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-.btn:hover {
-    background-color: var(--button-clicked);
-}
-#PlayX, #PlayO {
-    padding: 2.5vh 5vh;
-    margin: 2vh;
-}
-
 .status {
     margin: 20px 0;
     font-size: 24px;
     color: #333;
 }
+
 
 @media (max-width: 400px) {
     .cell {

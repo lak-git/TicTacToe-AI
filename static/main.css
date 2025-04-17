@@ -16,15 +16,16 @@ body {
     background-color: var(--bg);
 }
 
-h1{color: white;}
+h1, h2, label{color: white;}
 
 .btn {
-    padding: 2vh 3.5vh;
+    padding: 2vh 15px;
+    margin-inline: 5px;
     font-size: 14pt;
     background-color: var(--button);
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s;
 }

@@ -1,5 +1,10 @@
 #status{color: lightgray;}
 
+#back{
+    margin-top: 3vh;
+    padding-inline: 40px;
+}
+
 .game-container {
     text-align: center;
 }

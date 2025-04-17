@@ -153,27 +153,37 @@ class Game
     {
         if (this.player(board) === this.X) {
             let best_value = -Infinity
-            let best_move = null;
+            // let best_move = null;
+            let moves = [];
             for (const move of this.actions(board)) {
                 let value = this.min_value(this.result(board, move));
                 if (value > best_value) {
-                    best_move = move;
+                    // best_move = move;
                     best_value = value;
                 }
+                if (value == 1 || value == 0 && value == best_value) {
+                    moves.push(move);
+                }
             }
-            return best_move;
+            // return best_move;
+            return moves[Math.floor(Math.random() * moves.length)];
         }
         else{
             let best_value = Infinity;
-            let best_move = null;
+            // let best_move = null;
+            let moves = [];
             for (const move of this.actions(board)) {
                 let value = this.max_value(this.result(board, move));
                 if (value < best_value) {
-                    best_move = move;
+                    // best_move = move;
                     best_value = value;
                 }
+                if (value == -1 || value == 0 && value == best_value) {
+                    moves.push(move);
+                }
             }
-            return best_move;
+            // return best_move;
+            return moves[Math.floor(Math.random() * moves.length)];
         }
     }
     min_value(board)
@@ -213,14 +223,17 @@ class Game
 const ttt = new Game("0", "1", "2", "3", "4", "5", "6", "7", "8");
 const cells = document.querySelectorAll(".cell");
 const resetBtn = document.getElementById('reset');
+const backBtn = document.getElementById('back');
 const statusBox = document.getElementById('status');
+let chosenSign = JSON.parse(sessionStorage.getItem("PlayerSign"));
+let chosenDifficulty = JSON.parse(sessionStorage.getItem("Difficulty"));
 let currentBoard;
-let chosenSign;
 
 cells.forEach(cell => {
     cell.addEventListener("click", playerMove.bind(null, cell));
 });
-resetBtn.addEventListener("click", ()=>{location.href = ".";});
+resetBtn.addEventListener("click", startGame);
+backBtn.addEventListener("click", ()=>{location.href = ".";});
 startGame();
 
 
@@ -234,7 +247,6 @@ function startGame() {
     checkFirstMove();
 }
 function checkFirstMove() {
-    chosenSign = JSON.parse(sessionStorage.getItem("PlayerSign"));
     let notChosen = chosenSign === null;
     if (notChosen) {
         alert("Error: You need to choose to play as X or O.");
@@ -251,14 +263,16 @@ function playerMove(cell) {
         cell.textContent = ttt.player(currentBoard);
         ttt.syncBoards(currentBoard);
         checkGameState();
+        if (ttt.terminal(currentBoard)) { return; }
         AIMove();   
     }
 }
-
+// Make random move
 async function AIMove() {
     statusBox.innerHTML = "thinking...";
     await new Promise(r => setTimeout(r, 250));
-    let move = ttt.minimax(currentBoard);
+    let bestMove = ttt.minimax(currentBoard);
+    let move = moveBasedOnDifficulty(bestMove, chosenDifficulty)
     let noMove = move === null
     if (noMove) {
         checkGameState();
@@ -269,6 +283,22 @@ async function AIMove() {
     cells[ttt.getIndex(move[0], move[1])].textContent = sign;
     statusBox.innerHTML = "Your turn."
     checkGameState();
+}
+function moveBasedOnDifficulty(bestMove, difficulty) {
+    let allMoves = ttt.actions(currentBoard)
+    let randomMove = allMoves[Math.floor(Math.random() * allMoves.length)]
+    switch (difficulty) {
+        case "easy":
+            return randomMove;
+        case "medium":
+            if (Math.random() > 0.5) {
+                return randomMove
+            }else { return bestMove; }
+        case "hard":
+            return bestMove;
+        default:
+            break;
+    }
 }
 
 //Checks the current gamestate and updates the status message
@@ -281,7 +311,7 @@ function checkGameState() {
         disableClick();
         return;
     } else if (playerWon) {
-        statusBox.innerHTML = "You won! what, how?"
+        statusBox.innerHTML = "You won!"
         disableClick();
         return;
     }

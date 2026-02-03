@@ -1,8 +1,27 @@
 .button-container{display: flex;}
 
+body {
+    position: relative;
+}
+
 #PlayX, #PlayO {
     padding: 2.5vh 5vh;
     margin: 5vh;
+}
+
+#Try2{
+    background-color: #7f48e4;
+    position: absolute;
+    padding-inline: 4vh;
+    top: 1vh;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 5px #7f48e4d5;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+#Try2:hover {
+    background-color: #5f35ab;
+    box-shadow: 0 0 10px #5e35ab;
 }
 
 label{margin-inline: 3vw;}

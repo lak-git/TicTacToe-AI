@@ -6,5 +6,5 @@ playO.addEventListener("click", gameRedirect.bind(null, "O"));
 
 function gameRedirect(sign) {
     sessionStorage.setItem("PlayerSign", JSON.stringify(sign));
-    location.href = "./game2.html";
+    location.href = "./game-6x6.html";
 }

@@ -9,7 +9,7 @@ body {
     margin: 5vh;
 }
 
-#Try2{
+#Try6x6{
     background-color: #7f48e4;
     position: absolute;
     padding-inline: 4vh;
@@ -19,7 +19,7 @@ body {
     box-shadow: 0 0 5px #7f48e4d5;
     transition: background-color 0.3s, box-shadow 0.3s;
 }
-#Try2:hover {
+#Try6x6:hover {
     background-color: #5f35ab;
     box-shadow: 0 0 10px #5e35ab;
 }

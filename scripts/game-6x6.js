@@ -5,20 +5,20 @@ class Game
     EMPTY = "";
     REAL_BOARD;
     
-    constructor(tl, tc, tr, ml, mc, mr, bl, bc, br) {
-        let cell_tl = document.getElementById(tl);
-        let cell_tc = document.getElementById(tc);
-        let cell_tr = document.getElementById(tr);
-        let cell_ml = document.getElementById(ml);
-        let cell_mc = document.getElementById(mc);
-        let cell_mr = document.getElementById(mr);
-        let cell_bl = document.getElementById(bl);
-        let cell_bc = document.getElementById(bc);
-        let cell_br = document.getElementById(br);
+    constructor(r1c1, r1c2, r1c3, r2c1, r2c2, r2c3, r3c1, r3c2, r3c3) {
+        let cell_r1c1 = document.getElementById(r1c1);
+        let cell_r1c2 = document.getElementById(r1c2);
+        let cell_r1c3 = document.getElementById(r1c3);
+        let cell_r2c1 = document.getElementById(r2c1);
+        let cell_r2c2 = document.getElementById(r2c2);
+        let cell_r2c3 = document.getElementById(r2c3);
+        let cell_r3c1 = document.getElementById(r3c1);
+        let cell_r3c2 = document.getElementById(r3c2);
+        let cell_r3c3 = document.getElementById(r3c3);
         this.REAL_BOARD = [
-            [cell_tl, cell_tc, cell_tr],
-            [cell_ml, cell_mc, cell_mr],
-            [cell_bl, cell_bc, cell_br]
+            [cell_r1c1, cell_r1c2, cell_r1c3],
+            [cell_r2c1, cell_r2c2, cell_r2c3],
+            [cell_r3c1, cell_r3c2, cell_r3c3]
         ]
     }
 
@@ -233,13 +233,13 @@ cells.forEach(cell => {
     cell.addEventListener("click", playerMove.bind(null, cell));
 });
 resetBtn.addEventListener("click", startGame);
-backBtn.addEventListener("click", ()=>{location.href = "./ttt-2.html";});
+backBtn.addEventListener("click", ()=>{location.href = "./ttt-6x6.html";});
 startGame();
 
 
 //  ----    //
 function startGame() {
-    statusBox.innerHTML = "Tic-Tac-Toe!"
+    statusBox.innerHTML = "6x6 Tic-Tac-Toe!"
     currentBoard = ttt.initialState();
     cells.forEach(cell => {
         cell.textContent = ttt.EMPTY;

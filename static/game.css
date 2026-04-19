@@ -37,6 +37,10 @@
     background-color: #444;
 }
 
+.cell.winning-cell {
+    color: var(--button);
+}
+
 .status {
     margin: 20px 0;
     font-size: 24px;

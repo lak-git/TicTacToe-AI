@@ -242,9 +242,43 @@ function startGame() {
     statusBox.innerHTML = "Tic-Tac-Toe!"
     currentBoard = ttt.initialState();
     cells.forEach(cell => {
+        cell.classList.remove("winning-cell");
         cell.textContent = ttt.EMPTY;
     });
     checkFirstMove();
+}
+
+function findWinningLine(board) {
+    // Rows
+    for (let r = 0; r < 3; r++) {
+        if (board[r][0] !== ttt.EMPTY && board[r][0] === board[r][1] && board[r][1] === board[r][2]) {
+            return [[r, 0], [r, 1], [r, 2]];
+        }
+    }
+    // Columns
+    for (let c = 0; c < 3; c++) {
+        if (board[0][c] !== ttt.EMPTY && board[0][c] === board[1][c] && board[1][c] === board[2][c]) {
+            return [[0, c], [1, c], [2, c]];
+        }
+    }
+    // Diagonals
+    if (board[0][0] !== ttt.EMPTY && board[0][0] === board[1][1] && board[1][1] === board[2][2]) {
+        return [[0, 0], [1, 1], [2, 2]];
+    }
+    if (board[0][2] !== ttt.EMPTY && board[0][2] === board[1][1] && board[1][1] === board[2][0]) {
+        return [[0, 2], [1, 1], [2, 0]];
+    }
+    return null;
+}
+
+function highlightWinningLine(board) {
+    const line = findWinningLine(board);
+    if (!line) {
+        return;
+    }
+    line.forEach(([r, c]) => {
+        cells[ttt.getIndex(r, c)].classList.add("winning-cell");
+    });
 }
 function checkFirstMove() {
     let notChosen = chosenSign === null;
@@ -308,10 +342,12 @@ function checkGameState() {
     let playerWon = winner === chosenSign;
     if (aiWon) {
         statusBox.innerHTML = "You lost!"
+        highlightWinningLine(currentBoard);
         disableClick();
         return;
     } else if (playerWon) {
         statusBox.innerHTML = "You won!"
+        highlightWinningLine(currentBoard);
         disableClick();
         return;
     }

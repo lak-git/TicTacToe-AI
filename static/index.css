@@ -27,9 +27,13 @@ body {
 label{margin-inline: 3vw;}
 
 
-@media (max-width: 400px) {
+@media (max-width: 500px) {
     #PlayX, #PlayO {
-        margin-inline: 4vw;
+        margin: 15px;
         padding: 2.25vh 4.5vh;
+    }
+
+    #Try6x6{
+        width: 28vh;
     }
 }

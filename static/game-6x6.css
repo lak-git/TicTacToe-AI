@@ -48,11 +48,17 @@
 }
 
 
-@media (max-width: 400px) {
+@media (max-width: 750px) {
     .cell {
         width: 60px;
         height: 60px;
-        font-size: 30px;
+        font-size: 40px;
     }
+
+    .grid {
+        gap: 6px;
+        padding: 6px;
+    }
+
     #back{padding-inline: 30px;}
 }

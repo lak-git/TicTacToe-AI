@@ -9,17 +9,25 @@ body {
     margin: 5vh;
 }
 
-#Try6x6 {
-    background-color: var(--button-6x6);
+#Back {
+    background-color: var(--button);
+    box-shadow: 0 0 5px var(--button-shadow);
     position: absolute;
     padding-inline: 4vh;
     top: 1vh;
     left: 50%;
     transform: translateX(-50%);
-    box-shadow: 0 0 5px var(--button-6x6-shadow);
-    transition: background-color 0.3s, box-shadow 0.3s;
 }
-#Try6x6:hover {
+#Back:hover {
+    background-color: var(--button-clicked);
+    box-shadow: 0 0 10px var(--button-shadow);
+}
+
+.btn {
+    background-color: var(--button-6x6);
+    box-shadow: 0 0 5px var(--button-6x6-shadow);
+}
+.btn:hover {
     background-color: var(--button-6x6-clicked);
     box-shadow: 0 0 10px var(--button-6x6-shadow);
 }

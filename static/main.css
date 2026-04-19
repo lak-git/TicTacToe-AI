@@ -1,8 +1,13 @@
 :root{
     --bg : #141414;
     --grid-bg: #bdbdbd;
+    --win-color: #0ef16d;
     --button: #2ecc71;
     --button-clicked: #249c56;
+    --button-shadow: rgba(46, 204, 113, 0.45);
+    --button-6x6: #7f48e4;
+    --button-6x6-clicked: #5f35ab;
+    --button-6x6-shadow: #7f48e4d5;
 }
 
 body {
@@ -27,12 +32,12 @@ h1, h2, label{color: white;}
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    box-shadow: 0 0 5px rgba(46, 204, 113, 0.45);
+    box-shadow: 0 0 5px var(--button-shadow);
     transition: background-color 0.3s, box-shadow 0.3s;
 }
 .btn:hover {
     background-color: var(--button-clicked);
-    box-shadow: 0 0 10px rgba(46, 204, 113, 0.75);
+    box-shadow: 0 0 10px var(--button-shadow);
 }
 
 

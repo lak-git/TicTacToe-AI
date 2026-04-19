@@ -38,13 +38,22 @@
 }
 
 .cell.winning-cell {
-    color: var(--button);
+    color: var(--win-color);
 }
 
 .status {
     margin: 20px 0;
     font-size: 24px;
     color: #333;
+}
+
+.btn {
+    background-color: var(--button-6x6);
+    box-shadow: 0 0 5px var(--button-6x6-shadow);
+}
+.btn:hover {
+    background-color: var(--button-6x6-clicked);
+    box-shadow: 0 0 10px var(--button-6x6-shadow);
 }
 
 

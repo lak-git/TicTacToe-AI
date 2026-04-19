@@ -38,7 +38,7 @@
 }
 
 .cell.winning-cell {
-    color: var(--button);
+    color: var(--win-color);
 }
 
 .status {

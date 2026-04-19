@@ -239,7 +239,7 @@ startGame();
 
 //  ----    //
 function startGame() {
-    statusBox.innerHTML = "Tic-Tac-Toe!"
+    statusBox.innerHTML = "Tic-Tac-Toe !"
     currentBoard = ttt.initialState();
     cells.forEach(cell => {
         cell.classList.remove("winning-cell");

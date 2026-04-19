@@ -564,7 +564,7 @@ if (cells.length === 36 && resetBtn && backBtn && statusBox) {
 
 //  ----    //
 function startGame() {
-    statusBox.innerHTML = "6x6 Tic-Tac-Toe!"
+    statusBox.innerHTML = "6x6 Tic-Tac-Toe !"
     currentBoard = ttt.initialState();
     ttt.clearTransposition();
     cells.forEach(cell => {
